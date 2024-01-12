@@ -1,12 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import MetaData
 from sqlalchemy_serializer import SerializerMixin
+from app import create_app
 
-metadata = MetaData(naming_convention={
-    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-})
-
-db = SQLAlchemy(metadata=metadata)
+db = SQLAlchemy()
 
 class Game(db.Model, SerializerMixin):
     __tablename__ = 'games'
